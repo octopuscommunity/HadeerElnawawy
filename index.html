@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>هدير النووي — استراتيجية Personal Brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#050505;
+    --ink-2:#0d0d0d;
+    --ink-3:#141414;
+    --line:#242424;
+    --brass:#b8f10b;
+    --brass-soft:#7fa808;
+    --cream:#f5f5f0;
+    --muted:#8a8a8a;
+    --danger:#e0524a;
+    --good:#b8f10b;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Tajawal', sans-serif;
+    line-height:1.9;
+    overflow-x:hidden;
+  }
+  .mono{font-family:'Space Grotesk', monospace; letter-spacing:.5px;}
+  ::selection{background:var(--brass); color:#050505;}
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:60px 20px;
+    position:relative;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(184,241,11,.10), transparent 55%),
+      var(--ink);
+    border-bottom:1px solid var(--line);
+  }
+  .hero .eyebrow{
+    font-family:'Space Grotesk', monospace;
+    font-size:.72rem;
+    letter-spacing:3px;
+    color:var(--brass);
+    text-transform:uppercase;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:'Cairo', sans-serif;
+    font-weight:900;
+    font-size:clamp(2.2rem, 6vw, 4.2rem);
+    color:var(--cream);
+    margin-bottom:10px;
+  }
+  .hero h1 span{color:var(--brass);}
+  .hero .subtitle{
+    font-family:'Cairo', sans-serif;
+    font-weight:400;
+    font-size:clamp(1rem, 2vw, 1.3rem);
+    color:var(--muted);
+    max-width:620px;
+    margin-top:14px;
+  }
+  .hero .accounts{
+    margin-top:34px;
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .accounts span{
+    font-family:'Space Grotesk', monospace;
+    font-size:.78rem;
+    color:var(--muted);
+    border:1px solid var(--line);
+    padding:8px 16px;
+    border-radius:30px;
+  }
+  .hero .brand-mark{
+    position:absolute;
+    bottom:28px;
+    font-family:'Space Grotesk', monospace;
+    font-size:.68rem;
+    letter-spacing:2px;
+    color:var(--brass-soft);
+  }
+
+  /* ===== SECTION SHELL ===== */
+  section{
+    padding:90px 8vw;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .section-tag{
+    font-family:'Space Grotesk', monospace;
+    font-size:.72rem;
+    letter-spacing:3px;
+    color:var(--brass);
+    text-transform:uppercase;
+    margin-bottom:16px;
+    opacity:.9;
+  }
+  .section-title{
+    font-family:'Cairo', sans-serif;
+    font-weight:900;
+    font-size:clamp(1.7rem, 3.4vw, 2.6rem);
+    margin-bottom:36px;
+    color:var(--cream);
+  }
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
+
+  /* ===== EXEC SUMMARY ===== */
+  .lead{
+    font-size:1.15rem;
+    color:#d8d2c4;
+    max-width:820px;
+    margin-bottom:30px;
+  }
+  .lead strong{color:var(--brass); font-weight:700;}
+
+  .stat-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+    gap:18px;
+    margin-top:30px;
+    max-width:900px;
+  }
+  .stat-card{
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 18px;
+    text-align:center;
+  }
+  .stat-card .num{
+    font-family:'Space Grotesk', monospace;
+    font-size:1.9rem;
+    color:var(--brass);
+    font-weight:600;
+  }
+  .stat-card .label{
+    font-size:.85rem;
+    color:var(--muted);
+    margin-top:6px;
+  }
+
+  /* ===== BARRIERS ===== */
+  .barrier-list{display:flex; flex-direction:column; gap:14px; max-width:820px;}
+  .barrier{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    border-right:3px solid var(--danger);
+    border-radius:8px;
+    padding:18px 20px;
+  }
+  .barrier .n{
+    font-family:'Space Grotesk', monospace;
+    color:var(--danger);
+    font-weight:600;
+    min-width:26px;
+  }
+  .barrier .t{font-size:1rem; color:#e6e1d3;}
+  .barrier .t small{display:block; color:var(--muted); font-size:.85rem; margin-top:4px;}
+
+  /* ===== POSITIONING ===== */
+  .grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:34px;
+  }
+  @media(max-width:800px){.grid-2{grid-template-columns:1fr;}}
+  .panel{
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:30px;
+  }
+  .panel h3{
+    font-family:'Cairo', sans-serif;
+    color:var(--brass);
+    font-size:1.15rem;
+    margin-bottom:16px;
+  }
+  .panel ul{list-style:none;}
+  .panel li{
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+    color:#d8d2c4;
+    font-size:.96rem;
+  }
+  .panel li:last-child{border-bottom:none;}
+  .panel li b{color:var(--cream);}
+
+  /* ===== PILLARS ===== */
+  .pillars{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+    gap:20px;
+  }
+  .pillar{
+    background:linear-gradient(160deg, var(--ink-3), var(--ink-2));
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:26px 22px;
+    position:relative;
+    overflow:hidden;
+  }
+  .pillar::after{
+    content:"";
+    position:absolute; top:0; right:0;
+    width:70px; height:70px;
+    background:radial-gradient(circle, rgba(184,241,11,.16), transparent 70%);
+  }
+  .pillar .pct{
+    font-family:'Space Grotesk', monospace;
+    font-size:2.1rem;
+    color:var(--brass);
+    font-weight:600;
+  }
+  .pillar h4{
+    font-family:'Cairo', sans-serif;
+    font-size:1.05rem;
+    margin:10px 0 8px;
+    color:var(--cream);
+  }
+  .pillar p{font-size:.9rem; color:var(--muted);}
+  .bar-track{height:5px; background:var(--line); border-radius:4px; margin-top:16px; overflow:hidden;}
+  .bar-fill{height:100%; background:var(--brass);}
+
+  /* ===== TIMELINE / TRACKS ===== */
+  .track{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:24px;
+    border-top:1px solid var(--line);
+    padding:26px 0;
+  }
+  .track:first-of-type{border-top:none;}
+  @media(max-width:700px){.track{grid-template-columns:1fr;}}
+  .track .track-name{
+    font-family:'Cairo', sans-serif;
+    font-weight:700;
+    color:var(--brass);
+    font-size:1.02rem;
+  }
+  .track .track-name small{display:block; font-family:'Space Grotesk',monospace; color:var(--muted); font-size:.72rem; margin-top:6px;}
+  .track ul{list-style:none; display:flex; flex-direction:column; gap:8px;}
+  .track li{
+    font-size:.95rem;
+    color:#d8d2c4;
+    padding-right:18px;
+    position:relative;
+  }
+  .track li::before{
+    content:"—";
+    position:absolute; right:0; color:var(--brass-soft);
+  }
+
+  .weekly{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:16px;
+    margin-top:34px;
+  }
+  .weekly .day{
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px;
+  }
+  .weekly .day .dname{font-family:'Space Grotesk', monospace; color:var(--brass); font-size:.78rem; letter-spacing:1px; margin-bottom:8px;}
+  .weekly .day h5{font-family:'Cairo',sans-serif; font-size:.98rem; margin-bottom:6px; color:var(--cream);}
+  .weekly .day p{font-size:.85rem; color:var(--muted);}
+  .weekly .day .plat{margin-top:10px; font-size:.72rem; color:var(--brass-soft); font-family:'Space Grotesk',monospace;}
+
+  /* ===== KPI ===== */
+  .kpi-list{display:flex; flex-direction:column; gap:12px; max-width:800px;}
+  .kpi{
+    display:flex; align-items:center; gap:16px;
+    background:var(--ink-2); border:1px solid var(--line);
+    border-radius:8px; padding:16px 20px;
+  }
+  .kpi .dot{width:8px; height:8px; border-radius:50%; background:var(--brass); flex-shrink:0;}
+  .kpi span{font-size:.96rem; color:#d8d2c4;}
+  .flag-box{
+    margin-top:26px; max-width:800px;
+    background:rgba(181,86,63,.08);
+    border:1px solid rgba(181,86,63,.35);
+    border-radius:10px; padding:20px 22px;
+  }
+  .flag-box .ft{font-family:'Space Grotesk',monospace; color:var(--danger); font-size:.75rem; letter-spacing:1.5px; margin-bottom:8px;}
+  .flag-box p{color:#e6e1d3; font-size:.95rem;}
+
+  /* ===== NOTES ===== */
+  .note-list{display:flex; flex-direction:column; gap:16px; max-width:820px;}
+  .note{
+    border-right:3px solid var(--brass-soft);
+    padding:14px 20px;
+    background:var(--ink-2);
+    border-radius:6px;
+  }
+  .note .nt{font-family:'Space Grotesk', monospace; font-size:.72rem; color:var(--brass); letter-spacing:1px; margin-bottom:6px;}
+  .note p{font-size:.94rem; color:#d8d2c4;}
+
+  footer{
+    text-align:center;
+    padding:60px 20px;
+    color:var(--muted);
+    font-family:'Space Grotesk', monospace;
+    font-size:.75rem;
+    letter-spacing:1.5px;
+  }
+  footer .brass-line{width:60px; height:2px; background:var(--brass); margin:0 auto 20px;}
+
+  .brand-logo{
+    display:block;
+    margin:0 auto 28px;
+    width:190px;
+    height:auto;
+  }
+  .brand-logo.footer-logo{
+    width:150px;
+    margin:0 auto 22px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img class="brand-logo" src="data:image/png;base64,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" alt="Octopus Community">
+  <div class="eyebrow mono">OCTOPUS COMMUNITY — PERSONAL BRAND STRATEGY</div>
+  <h1>هدير النووي <span>— من حساب شخصي لـ Personal Brand</span></h1>
+  <p class="subtitle">خطة 3 شهور نجهّز بيها البروفايل يستقبل Collaborations حقيقية مع البراندات — من غير ما نصرف جنيه واحد على إعلانات.</p>
+  <div class="accounts">
+    <span>@hadeer_elnawawy — Instagram</span>
+    <span>@hadeer.elnawawy1 — TikTok</span>
+  </div>
+  <div class="brand-mark mono">OCTOPUS COMMUNITY · NEW CAIRO</div>
+</div>
+
+<!-- ===== EXEC SUMMARY ===== -->
+<section id="summary">
+  <div class="reveal">
+    <div class="section-tag">01 — نظرة سريعة</div>
+    <h2 class="section-title">الوضع الحالي</h2>
+    <p class="lead">عندك أساس قوي فعلاً: محتوى بيوصل لمشاهدات عالية، تصوير ثابت وشكله محترف، وعلاقة عمل قائمة فعلاً مع مصممة وميكب آرتست (من خلال التاجينج في بوستاتك). <strong>المشكلة مش في المحتوى — المشكلة إن البروفايل نفسه لسه مش جاهز يستقبل Collaborations رسمية</strong>، وده حل سريع قبل أي حاجة تانية.</p>
+
+    <div class="stat-row">
+      <div class="stat-card"><div class="num">356</div><div class="label">متابعين إنستجرام</div></div>
+      <div class="stat-card"><div class="num">2,932</div><div class="label">متابَعة إنستجرام</div></div>
+      <div class="stat-card"><div class="num">226</div><div class="label">متابعين تيك توك</div></div>
+      <div class="stat-card"><div class="num">2,408</div><div class="label">لايكات تيك توك</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BARRIERS ===== -->
+<section id="barriers">
+  <div class="reveal">
+    <div class="section-tag">02 — العوائق الحقيقية</div>
+    <h2 class="section-title">اللي واقف قدام البروفايل دلوقتي</h2>
+    <div class="barrier-list">
+      <div class="barrier">
+        <div class="n mono">01</div>
+        <div class="t">أرقام المتابعة مقلوبة<small>بتتابعي 2,932، بيتابعك 356 بس. أول حاجة أي براند بيشوفها، وبتدي انطباع إن الحساب لسه جديد.</small></div>
+      </div>
+      <div class="barrier">
+        <div class="n mono">02</div>
+        <div class="t">صور قديمة وجديدة مخلوطة<small>صور العيلة والجواز والسفريات القديمة لسه جنب محتوى الفاشون الجديد، من غير فاصل بينهم.</small></div>
+      </div>
+      <div class="barrier">
+        <div class="n mono">03</div>
+        <div class="t">علامة "AI content" على بوست<small>ظهرت تحت اسمك بدل "Original audio" — لازم تتشال، بتضرب المصداقية من أول نظرة.</small></div>
+      </div>
+      <div class="barrier">
+        <div class="n mono">04</div>
+        <div class="t">الحساب لسه شخصي مش بيزنس<small>يعني مفيش أرقام ظاهرة، ومفيش طريقة رسمية لأي براند يتواصل بيها.</small></div>
+      </div>
+      <div class="barrier">
+        <div class="n mono">05</div>
+        <div class="t">اللي بيتفاعل نفس الناس دايماً<small>المشاهدات كويسة (وصلت لـ21K)، لكن اللي بيعلّق هم نفس الأصحاب والعيلة في كل مرة، مش ناس جديدة.</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POSITIONING ===== -->
+<section id="positioning">
+  <div class="reveal">
+    <div class="section-tag">03 — الجمهور والنغمة</div>
+    <h2 class="section-title">بنتكلم مع مين، وبنقولها إزاي</h2>
+    <div class="grid-2">
+      <div class="panel">
+        <h3>الجمهور المستهدف</h3>
+        <ul>
+          <li><b>السن:</b> 30–45 سنة</li>
+          <li><b>الموقع:</b> القاهرة الكبرى، وممكن جمهور عربي أوسع</li>
+          <li><b>مين هي:</b> ست متجوزة وأم، دخلها مستقر، بتحب الفخامة الهادية مش الترند السريع</li>
+          <li><b>بتحب:</b> ستايلينج المحجبات بقطع كلاسيك، ومحتوى GRWM وخلف الكواليس</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>إزاي بنتكلم</h3>
+        <ul>
+          <li><b>اللغة:</b> عربي وإنجليزي مخلوطين طبيعي، زي ما جمهورك بيكتب في الكومنتات</li>
+          <li><b>الإحساس:</b> هادي وواثق، فيه خفة دم بسيطة — مش صوت عالي ومش "أوفر"</li>
+          <li><b>الشخصية:</b> صحبتك اللي ذوقها عالي، مش خبيرة بعيدة عن الناس</li>
+          <li><b>ممنوع:</b> كلام بيع مباشر، وأي كلمة لها علاقة بالذكاء الاصطناعي في أي بوست</li>
+          <li><b>كل كابشن لازم يقفل بسؤال أو دعوة بسيطة</b> — مش بيع، لكن فعل واضح: "شكلكم إيه رأيكم في اللون ده؟"، "احفظي البوست ده لو هتسافري قريب"، "قوليلي في الكومنت إيه المناسبة اللي بتستنيها"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PILLARS ===== -->
+<section id="pillars">
+  <div class="reveal">
+    <div class="section-tag">04 — المحاور</div>
+    <h2 class="section-title">محاور المحتوى</h2>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pct mono">35%</div>
+        <h4>GRWM يومي</h4>
+        <p>أقوى فورمات عندك — بس كل فيديو لازم يكون له مناسبة أو فكرة واضحة، مش بس "لبست إيه النهاردة".</p>
+        <div class="bar-track"><div class="bar-fill" style="width:35%"></div></div>
+      </div>
+      <div class="pillar">
+        <div class="pct mono">25%</div>
+        <h4>Modest Styling Tips</h4>
+        <p>مش بس عرض أوت فيت — نصيحة عملية حقيقية، زي إزاي تلبسي لون معين وانتي محجبة.</p>
+        <div class="bar-track"><div class="bar-fill" style="width:25%"></div></div>
+      </div>
+      <div class="pillar">
+        <div class="pct mono">20%</div>
+        <h4>Quiet Luxury على أي ميزانية</h4>
+        <p>الزاوية اللي هتفرقك عن أي حساب تاني في المساحة دي — فخامة هادية بمنتجات عادية مش لازم تكون غالية (تفاصيلها في قسم التمايز تحت).</p>
+        <div class="bar-track"><div class="bar-fill" style="width:20%"></div></div>
+      </div>
+      <div class="pillar">
+        <div class="pct mono">20%</div>
+        <h4>Travel Styling</h4>
+        <p>"إزاي تلبسي محجبة وانتي مسافرة" — مختلفة تماماً عن صور السفريات الشخصية القديمة.</p>
+        <div class="bar-track"><div class="bar-fill" style="width:20%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIFFERENTIATION ===== -->
+<section id="differentiation">
+  <div class="reveal">
+    <div class="section-tag">05 — التمايز عن السوق</div>
+    <h2 class="section-title">ليه هدير مش نسخة تانية من حد تاني</h2>
+    <p class="lead">أقرب حساب شبه هدير في السوق هو @esraamostafaofficial — نفس نغمة الـModesty، وعندها Highlight اسمه Outfits بالظبط زي اللي احنا مقترحينه. لو مشينا زي ما هي، هدير هتبان "نسخة تانية" مش شخصية مستقلة. عشان كده لازم زاوية واضحة تفرقها.</p>
+
+    <div class="grid-2">
+      <div class="panel">
+        <h3>السوق التقليدي (زي @esraamostafaofficial)</h3>
+        <ul>
+          <li><b>الزاوية:</b> Modesty من منظور "زوجة وأم"</li>
+          <li><b>الإحساس:</b> دافئ وعائلي، بيتكلم من مكان الأسرة</li>
+          <li><b>المنتجات:</b> مش بالضرورة مربوطة بميزانية محددة</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>زاوية هدير — Quiet Luxury على أي ميزانية</h3>
+        <ul>
+          <li><b>الزاوية:</b> فخامة هادية متاحة، مش وعظ ديني ولا دور "الزوجة المثالية"</li>
+          <li><b>الإحساس:</b> ثقة شخصية مستقلة، مش هوية مبنية على دور عائلي</li>
+          <li><b>المنتجات:</b> دايماً موضّح إن القطعة متاحة الميزانية — ده بالظبط اللي محدش بيعمله في المساحة دي دلوقتي</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flag-box" style="margin-top:26px;">
+      <div class="ft">التطبيق العملي</div>
+      <p>كل مرة نتكلم فيها عن قطعة أو لوك، الكابشن أو الفيديو لازم يوضح "إزاي تعملي اللوك ده بميزانية معقولة" — مش بس عرض الشكل النهائي. الزاوية دي هي الفيصل بين "حساب فاشون تاني" و"مرجع فعلي الناس بترجعله".</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXECUTION ===== -->
+<section id="execution">
+  <div class="reveal">
+    <div class="section-tag">06 — خطة التنفيذ</div>
+    <h2 class="section-title">4 خطوط، ماشيين مع بعض من أول يوم</h2>
+    <p class="lead" style="margin-bottom:0;">مش هنستنى مرحلة تخلص عشان نبدأ اللي بعدها. الأربع خطوط دول بيمشوا مع بعض من الأسبوع الأول.</p>
+
+    <div class="track">
+      <div class="track-name">ترتيب البروفايل<small class="mono">أسبوع 1</small></div>
+      <ul>
+        <li>Highlight جديد اسمه "Outfits" يجمع كل فيديوهات الستايلينج من دلوقتي</li>
+        <li>مراجعة البوست اللي عليه علامة AI content ومعرفة سببها</li>
+        <li>تحويل الحساب لـ Professional عشان الأرقام تبان</li>
+        <li>تقليل عدد اللي بتتابعيهم تدريجياً</li>
+        <li>طريقة تواصل واحدة واضحة في البايو (واتساب بيزنس أو إيميل)</li>
+      </ul>
+    </div>
+
+    <div class="track">
+      <div class="track-name">الهوية البصرية<small class="mono">أسبوع 2–4</small></div>
+      <ul>
+        <li>تحديد 2–3 أماكن تصوير إضافية غير الخلفية الحالية — عشان المحتوى ميبانش متكرر بصرياً على طول</li>
+        <li>فلتر لوني واحد ثابت يتطبّق على كل فيديو جديد، يبقى بصمة بصرية واضحة</li>
+        <li>استغلال الميزانية المتاحة في 2–3 قطع أساسية بألوان محايدة (بيج، كريمي، أخضر زيتي) بدل تجديد الدولاب بالكامل — أولوية للقطع اللي تتصور في أكتر من فورمات</li>
+      </ul>
+    </div>
+
+    <div class="track">
+      <div class="track-name">ثبات النشر<small class="mono">مستمر</small></div>
+      <ul>
+        <li>تيك توك بيوصل أرقام أعلى دلوقتي، فهو أولوية التصوير والتوقيت</li>
+        <li>نفس الفيديو بعد كده بيتنزل على IG Reels بعد كام ساعة — كل فورمات بينزل على المنصتين، مفيش فورمات حصري لمنصة واحدة</li>
+        <li>جدول نشر ثابت كل أسبوع (تفاصيله تحت)</li>
+      </ul>
+    </div>
+
+    <div class="track">
+      <div class="track-name">استغلال الـ Collaborations<small class="mono">مستمر</small></div>
+      <ul>
+        <li>مقترح: نبني محتوى خلف الكواليس جديد مع @ayaadelcouture و@walaatarekmakeup_artist (اللي بتعمليلهم تاج أصلاً في بوستاتك) — يوريهم للبراندات إنك شغالة بجدية</li>
+        <li>الأهم: نطلب من الاتنين إنهم يعملوا Repost أو يعملولك تاج في محتواهم هما — ده بيوصلك لجمهورهم هما، مش بس جمهورك انتي</li>
+        <li>بوست شهري "من هنا بدأت" يعرض رحلتك — بيحول الأرشيف القديم لميزة مش عيب</li>
+      </ul>
+    </div>
+
+    <div class="weekly">
+      <div class="day">
+        <div class="dname">الإثنين</div>
+        <h5>Fast Hook (8–15 ث)</h5>
+        <p>3 طرق تلبسي بيها نفس البدلة في 3 مناسبات مختلفة</p>
+        <div class="plat">TikTok + IG</div>
+      </div>
+      <div class="day">
+        <div class="dname">الأربعاء</div>
+        <h5>GRWM (30–45 ث)</h5>
+        <p>GRWM لمناسبة محددة — مثلاً "عزومة عيلة الأحد"</p>
+        <div class="plat">TikTok + IG</div>
+      </div>
+      <div class="day">
+        <div class="dname">الجمعة</div>
+        <h5>Talking Head (20–30 ث)</h5>
+        <p>نصيحة ستايلينج مباشرة للكاميرا</p>
+        <div class="plat">TikTok + IG</div>
+      </div>
+      <div class="day">
+        <div class="dname">السبت</div>
+        <h5>Cinematic/Travel</h5>
+        <p>مقطع بأسلوب Quiet Luxury — إيقاع بطيء ومتأني</p>
+        <div class="plat">TikTok + IG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KPI ===== -->
+<section id="kpi">
+  <div class="reveal">
+    <div class="section-tag">07 — مؤشرات النجاح</div>
+    <h2 class="section-title">إزاي هنعرف إن الخطة شغالة</h2>
+    <div class="kpi-list">
+      <div class="kpi"><div class="dot"></div><span>الأهم: تعليقات من حسابات جديدة — ده المؤشر الحقيقي إننا وصلنا لناس مش دايرة الأصحاب والعيلة، مش مجرد رقم متابعين</span></div>
+      <div class="kpi"><div class="dot"></div><span>أرقام المتابعة على إنستجرام تتحسّن — بس بيتحسب مع المؤشر اللي فوق، مش لوحده، عشان زيادة المتابعين ممكن تبقى برضه من نفس الدايرة الموسّعة</span></div>
+      <div class="kpi"><div class="dot"></div><span>متابعين جدد كل شهر، بعد ما الحساب يبقى Professional</span></div>
+      <div class="kpi"><div class="dot"></div><span>الـ Collaborations الصغيرة الحالية تتحول لـ Collaboration موثّق ومسجّل</span></div>
+    </div>
+    <div class="flag-box">
+      <div class="ft">محتاجين تأكيد منك</div>
+      <p>عايزين رقم واضح منك — مثلاً عدد متابعين أو عدد Collaborations خلال الـ3 شهور — عشان نقيس عليه الخطة صح.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ADS-READY + NOTES ===== -->
+<section id="notes">
+  <div class="reveal">
+    <div class="section-tag">08 — قبل ما نتواصل مع أي براند</div>
+    <h2 class="section-title">إزاي نبقى جاهزين فعلاً</h2>
+    <div class="note-list">
+      <div class="note"><div class="nt">MEDIA KIT</div><p>ملف بسيط فيه أرقامك، متوسط المشاهدات، أمثلة محتوى، والجمهور بتاعك.</p></div>
+      <div class="note"><div class="nt">التوقيت</div><p>هنبني 4–6 أسابيع محتوى ثابت الأول، عشان الأرقام تبقى مستقرة قبل أي تواصل مع براند.</p></div>
+      <div class="note"><div class="nt">قرار ليكي انتي بس</div><p>أي حذف لصور شخصية أو عائلية قديمة من الـ Grid، القرار ده ليكي انتي بس، وهيستنى موافقتك الصريحة قبل ما يتنفذ.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img class="brand-logo footer-logo" src="data:image/png;base64,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" alt="Octopus Community">
+  <div class="brass-line"></div>
+  OCTOPUS COMMUNITY — STRATEGY &amp; GROWTH
+</footer>
+
+</body>
+</html>
